@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Press+Start+2P&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Default Fallbacks */
+  --vibe-bg: #0a0a0a;
+  --vibe-text: #ffffff;
+  --vibe-accent: #ffffff; 
+}
+
+/* Base Styles */
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--vibe-bg); /* Now controlled by the wrapper */
+  color: var(--vibe-text);
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Scrollbar Hiding */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent; 
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1); 
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2); 
+}
+
+/* --- VIBE DEFINITIONS --- */
+/* Note: We REMOVED --vibe-accent from these classes to allow the JS picker to work. */
+
+/* Simple Vibe */
+.vibe-simple {
+  --vibe-bg: #f3f4f6;
+  --vibe-text: #111827;
+  /* --vibe-accent is handled by JS config now */
+}
+.dark .vibe-simple { 
+  --vibe-bg: #111827;
+  --vibe-text: #f3f4f6;
+}
+
+/* Elegant Vibe */
+.vibe-elegant {
+  --vibe-bg: #1c1917;
+  --vibe-text: #e7e5e4;
+  font-family: 'Playfair Display', serif;
+}
+
+/* Retro Vibe */
+.vibe-retro {
+  --vibe-bg: #080808;
+  --vibe-text: #33ff33;
+  font-family: 'Press Start 2P', cursive;
+}
+
+/* Gaming Vibe */
+.vibe-gaming {
+  --vibe-bg: #0f172a;
+  --vibe-text: #f8fafc;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Utilities */
+.vibe-glow {
+  filter: drop-shadow(0 0 6px var(--vibe-accent));
+}
+
+/* Range Slider */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--vibe-accent);
+  box-shadow: 0 0 10px var(--vibe-accent), 0 0 4px var(--vibe-accent);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.3);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--vibe-accent);
+  box-shadow: 0 0 10px var(--vibe-accent);
+  border: none;
+  cursor: pointer;
+}
+
+/* Selection */
+::selection {
+  background: var(--vibe-accent);
+  color: #000;
+}

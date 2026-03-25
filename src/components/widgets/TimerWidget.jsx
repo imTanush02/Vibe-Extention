@@ -1,8 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Play, Pause, RotateCcw } from "lucide-react";
 import { motion } from "framer-motion";
+import { useVibe } from "../../engine/vibeEngine";
 
 const TimerWidget = () => {
+  const { currentVibe } = useVibe();
+  const isGaming = currentVibe === "gaming";
+
   const [timeLeft, setTimeLeft] = useState(25 * 60);
   const [totalTime, setTotalTime] = useState(25 * 60);
   const [isRunning, setIsRunning] = useState(false);
@@ -43,7 +47,11 @@ const TimerWidget = () => {
   const startEditing = () => {
     if (isRunning) return;
     setIsEditing(true);
-    setEditMins(Math.floor(timeLeft / 60).toString().padStart(2, "0"));
+    setEditMins(
+      Math.floor(timeLeft / 60)
+        .toString()
+        .padStart(2, "0"),
+    );
     setEditSecs((timeLeft % 60).toString().padStart(2, "0"));
     setTimeout(() => minsRef.current?.select(), 50);
   };
@@ -89,19 +97,22 @@ const TimerWidget = () => {
     }
   };
 
-  const displayMins = Math.floor(timeLeft / 60).toString().padStart(2, "0");
+  const displayMins = Math.floor(timeLeft / 60)
+    .toString()
+    .padStart(2, "0");
   const displaySecs = (timeLeft % 60).toString().padStart(2, "0");
   const progress = ((totalTime - timeLeft) / totalTime) * 100;
 
-  const inputClass =
-    "w-20 bg-white/5 p-2 border border-white/10 rounded-lg text-center text-4xl font-bold text-white outline-none focus:border-[var(--vibe-accent)] focus:bg-white/10 focus:shadow-[0_0_12px_var(--vibe-accent)20] tabular-nums";
+  const inputClass = `w-20 bg-white/5 p-2 border border-white/10 rounded-lg text-center text-4xl font-bold text-white outline-none focus:border-[var(--vibe-accent)] focus:bg-white/10 tabular-nums ${isGaming ? "focus:shadow-[0_0_12px_var(--vibe-accent)20]" : "focus:shadow-lg"}`;
 
   return (
-    <div className="flex flex-col items-center justify-between h-full w-[15rem] relative font-['Orbitron']">
+    <div
+      className={`flex flex-col items-center justify-between h-full w-[15rem] relative ${isGaming ? "font-['Orbitron']" : "font-sans"}`}
+    >
       {/* Progress Bar */}
       <div className="absolute top-0 left-0 w-full h-1 bg-white/10 rounded-full overflow-hidden">
         <motion.div
-          className="h-full bg-[var(--vibe-accent)] shadow-[0_0_10px_var(--vibe-accent)]"
+          className={`h-full bg-[var(--vibe-accent)] ${isGaming ? "shadow-[0_0_10px_var(--vibe-accent)]" : ""}`}
           initial={{ width: 0 }}
           animate={{ width: `${progress}%` }}
           transition={{ duration: 1, ease: "linear" }}
@@ -166,15 +177,17 @@ const TimerWidget = () => {
             className="flex items-baseline gap-3 py-4 cursor-pointer  select-none group"
           >
             <span
-              className="text-5xl tracking-wider font-bold  tabular-nums"
+              className="text-5xl tracking-wider font-bold tabular-nums"
               style={{
-                color:  "white",
-                textShadow: isRunning ? "0 0 20px var(--vibe-accent)" : "none",
+                color: "white",
+                textShadow:
+                  isRunning && isGaming
+                    ? "0 0 20px var(--vibe-accent)"
+                    : "none",
               }}
             >
               {displayMins}:{displaySecs}
             </span>
-            
           </div>
         )}
       </div>
@@ -190,11 +203,18 @@ const TimerWidget = () => {
 
         <button
           onClick={toggleTimer}
-          className="p-2 rounded-full bg-white/10 hover:bg-[var(--vibe-accent)] hover:text-black  text-white border border-white/10 active:scale-95"
+          className={`p-2 rounded-full border active:scale-95 transition-colors ${
+            isGaming
+              ? "bg-white/10 hover:bg-[var(--vibe-accent)] hover:text-black text-white border-white/10"
+              : "bg-white/5 hover:bg-white/10 text-white border-white/10"
+          }`}
           style={{
-            borderColor: isRunning
-              ? "var(--vibe-accent)"
-              : "rgba(255,255,255,0.1)",
+            borderColor:
+              isRunning && isGaming
+                ? "var(--vibe-accent)"
+                : isRunning && !isGaming
+                  ? "rgba(255,255,255,0.3)"
+                  : "rgba(255,255,255,0.1)",
           }}
         >
           {isRunning ? (

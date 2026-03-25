@@ -30,8 +30,8 @@ const SimpleSearch = () => {
     >
       {/* Search bar */}
       <form onSubmit={handleSearch} className="flex items-center gap-2 mb-3">
-        <div className="flex-1 flex items-center bg-neutral-800/80 backdrop-blur-xl rounded-full px-4 py-2.5 gap-3">
-          <SearchIcon size={18} className="text-white/30 shrink-0" />
+        <div className="flex-1 flex items-center bg-black/40 backdrop-blur-md rounded-full px-4 py-2.5 gap-3 border border-white/10 shadow-sm">
+          <SearchIcon size={18} className="text-white/40 shrink-0" />
           <input
             type="text"
             value={query}
@@ -42,15 +42,15 @@ const SimpleSearch = () => {
         </div>
         <button
           type="submit"
-          className="bg-neutral-800/80 backdrop-blur-xl text-white/80 text-sm font-medium px-5 py-2.5 rounded-full hover:bg-neutral-700/80 transition-colors"
+          className="bg-black/10 backdrop-blur-md border border-white/10 text-white/80 text-sm font-medium px-5 py-2.5 rounded-full hover:bg-black/20 transition-colors shadow-sm"
         >
           Search
         </button>
       </form>
 
       {/* Search On row */}
-      <div className="flex items-center gap-2 flex-wrap">
-        <span className="bg-neutral-800/80 backdrop-blur-xl rounded-full px-3 py-1.5 text-xs text-white/40 font-medium">
+      <div className="flex items-center gap-2 flex-wrap mt-4">
+        <span className="bg-black/10 backdrop-blur-md border border-white/10 rounded-full px-3 py-1.5 text-xs text-white/50 font-medium shadow-sm">
           Search On
         </span>
 
@@ -58,10 +58,10 @@ const SimpleSearch = () => {
           <button
             key={t.key}
             onClick={() => setActiveTarget(t.key)}
-            className="flex items-center gap-1.5 rounded-full px-3 py-1.5 transition-all text-xs font-medium"
+            className="flex items-center gap-1.5 rounded-full px-3 py-1.5 transition-all text-xs font-medium border border-white/10 shadow-sm hover:bg-white/10"
             style={{
-              backgroundColor: activeTarget === t.key ? "rgba(255,255,255,0.15)" : "rgba(60,60,60,0.7)",
-              color: activeTarget === t.key ? "white" : "rgba(255,255,255,0.55)",
+              backgroundColor: activeTarget === t.key ? "rgba(255,255,255,0.15)" : "rgba(0,0,0,0.1)",
+              color: activeTarget === t.key ? "white" : "rgba(255,255,255,0.6)",
             }}
           >
             {t.favicon && (

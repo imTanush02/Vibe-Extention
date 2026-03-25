@@ -70,8 +70,6 @@ export const VibeProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    storage.set("vibe_config", config);
-
     // Agar wallpaper custom hai, toh IndexedDB se fetch karo
     if (config.wallpaper.url === "indexeddb_custom") {
       wallpaperStorage.get("current_wallpaper").then((blob) => {
@@ -80,7 +78,7 @@ export const VibeProvider = ({ children }) => {
     } else {
       setResolvedUrl(config.wallpaper.url);
     }
-  }, [config]);
+  }, [config.wallpaper.url]);
 
   const toggleWidget = (widgetId) => {
     setConfig((prev) => ({
@@ -89,9 +87,12 @@ export const VibeProvider = ({ children }) => {
     }));
   };
 
-  // 1. Persistence Only (We removed the document.body logic from here)
+  // 1. Persistence Only (Debounced to prevent lag on fast updates like Color Picker)
   useEffect(() => {
-    storage.set("vibe_config", config);
+    const handler = setTimeout(() => {
+      storage.set("vibe_config", config);
+    }, 100);
+    return () => clearTimeout(handler);
   }, [config]);
 
   // 2. State Updaters

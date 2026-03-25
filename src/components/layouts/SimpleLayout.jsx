@@ -17,25 +17,21 @@ const SimpleLayout = ({ onOpenSettings }) => {
         {/* Top Row: Clock (left) + Weather (center-right) */}
         <div className="flex items-start justify-between px-8 pt-6">
           {/* Analog Clock */}
-          <div className="flex items-center justify-center">
+          <div className="flex  gap-10 w-full  h-[40vh] items-center justify-center">
             <Clock />
+             <Greeting />
+              <Weather />
           </div>
 
-          {/* Weather */}
-          <div className="flex items-start pt-2">
-            <Weather />
-          </div>
+        
         </div>
 
         {/* Center: Search */}
-        <div className="flex-1 flex items-center justify-center px-8">
+        <div className="flex-1 flex items-start justify-center px-8">
           <Search />
         </div>
 
-        {/* Bottom Left: Greeting */}
-        <div className="absolute bottom-8 left-8">
-          <Greeting />
-        </div>
+
 
         {/* Settings Button */}
         <SimpleTaskbar onOpenSettings={onOpenSettings} />

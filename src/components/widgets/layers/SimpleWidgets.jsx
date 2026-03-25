@@ -74,9 +74,9 @@ const SimpleWidgets = () => {
             transition={{ duration: 0.2 }}
           >
             {/* Simple rounded card wrapper */}
-            <div className="bg-neutral-800/75 backdrop-blur-xl rounded-2xl border border-white/5 p-5 overflow-hidden hover:border-white/10 transition-colors">
+            <div className="bg-black/30 backdrop-blur-md rounded-2xl border border-white/10 p-5 overflow-hidden hover:bg-black/20 hover:border-white/20 transition-all duration-300 shadow-sm">
               {/* Label */}
-              <div className="text-[11px] text-white/30 font-medium tracking-wide uppercase mb-3">
+              <div className="text-[10px] text-white/40 font-medium tracking-wide uppercase mb-3">
                 {labels[key]}
               </div>
               {ComponentMap[key]}

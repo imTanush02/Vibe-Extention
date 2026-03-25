@@ -27,7 +27,7 @@ const SimpleGreeting = ({ userName, setUserName }) => {
       className="flex flex-col items-start font-['Inter']"
     >
       {/* Name pill */}
-      <div className="bg-neutral-800/80 backdrop-blur-xl rounded-full px-4 py-1.5 mb-1">
+      <div className="bg-black/30 backdrop-blur-md rounded-full px-4 py-1.5 mb-1 border border-white/10 shadow-sm">
         <input
           type="text"
           value={localName}

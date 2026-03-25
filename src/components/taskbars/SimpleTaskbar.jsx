@@ -11,7 +11,7 @@ const SimpleTaskbar = ({ onOpenSettings }) => {
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 flex items-center gap-1.5 bg-neutral-800/75 backdrop-blur-2xl rounded-2xl px-3 py-2 border border-white/5 font-['Inter']"
+      className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 flex items-center gap-1.5 bg-black/30 backdrop-blur-md rounded-full px-4 py-2 border border-white/10 shadow-sm font-['Inter']"
     >
       {/* Shortcut icons */}
       {links.map((link) => {

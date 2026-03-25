@@ -81,7 +81,7 @@ const SimpleWeather = () => {
       className="flex items-start gap-4 font-['Inter']"
     >
       {/* Detail Card */}
-      <div className="bg-neutral-800/80 backdrop-blur-xl rounded-2xl p-4 min-w-[220px]">
+      <div className="bg-black/40 backdrop-blur-md rounded-2xl p-4 min-w-[220px] border border-white/10 shadow-sm">
         <p className="text-white/90 text-sm font-medium mb-3">{desc}</p>
 
         {/* Humidity bar */}
@@ -99,11 +99,11 @@ const SimpleWeather = () => {
 
         {/* Pills */}
         <div className="flex gap-2">
-          <div className="flex items-center gap-1.5 bg-neutral-700/60 rounded-full px-3 py-1">
+          <div className="flex items-center gap-1.5 bg-black/20 rounded-full px-3 py-1 border border-white/10">
             <Thermometer size={11} className="text-white/40" />
             <span className="text-xs text-white/70">Feels {weather.feelsLike}°C</span>
           </div>
-          <div className="flex items-center gap-1.5 bg-neutral-700/60 rounded-full px-3 py-1">
+          <div className="flex items-center gap-1.5 bg-black/20 rounded-full px-3 py-1 border border-white/10">
             <MapPin size={11} className="text-white/40" />
             <span className="text-xs text-white/70">{city}</span>
           </div>
@@ -111,7 +111,7 @@ const SimpleWeather = () => {
       </div>
 
       {/* Temp Circle */}
-      <div className="w-28 h-28 rounded-full bg-neutral-800/80 backdrop-blur-xl flex flex-col items-center justify-center">
+      <div className="w-28 h-28 rounded-full bg-black/30 backdrop-blur-md border border-white/10 shadow-sm flex flex-col items-center justify-center">
         <span className="text-2xl font-semibold text-white leading-none">
           {weather.temp}
           <span className="text-sm text-white/50">°C</span>

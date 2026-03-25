@@ -60,7 +60,7 @@ const SimpleClock = ({ accentColor }) => {
     ctx.strokeStyle = "rgba(255,255,255,0.8)";
     ctx.lineWidth = 3;
     ctx.lineCap = "round";
-    ctx.stroke();
+    ctx.stroke(); 
 
     // Second hand
     const secAngle = (seconds * 6 - 90) * (Math.PI / 180);
@@ -112,7 +112,7 @@ const SimpleClock = ({ accentColor }) => {
       <svg width="220" height="220" viewBox="0 0 220 220" className="absolute">
         <path
           d={scallopPath()}
-          fill="rgba(50,50,50,0.75)"
+          fill="rgba(0,0,0,0.15)"
           stroke="rgba(255,255,255,0.1)"
           strokeWidth="1"
         />

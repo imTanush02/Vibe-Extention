@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Plus, Trash2, Link as LinkIcon, Globe, Gamepad2, Layers } from "lucide-react";
+import { X, Plus, Trash2, Link as LinkIcon, Globe, Gamepad2, Layers, Sparkles } from "lucide-react";
 import { useVibe, VIBES } from "../engine/vibeEngine";
 import WallpaperManager from "./WallpaperManager";
 import clsx from "clsx";
@@ -19,7 +19,8 @@ const SettingsPanel = ({ isOpen, onClose }) => {
     useVibe();
   const [newLink, setNewLink] = useState({ name: "", url: "" });
   const accent = theme?.accent || "#00ffff";
-  const isSimple = currentVibe === VIBES.SIMPLE;
+  const isElegant = currentVibe === VIBES.ELEGANT;
+  const isSimple = currentVibe === VIBES.SIMPLE || isElegant;
 
   const handleDeleteLink = (id) => {
     updateTaskbar({ links: taskbar.links.filter((link) => link.id !== id) });
@@ -36,9 +37,25 @@ const SettingsPanel = ({ isOpen, onClose }) => {
     setNewLink({ name: "", url: "" });
   };
 
+
   // Vibe-specific style tokens
-  const s = isSimple
-    ? {
+  let s;
+  if (isElegant) {
+    s = {
+        font: "serif",
+        headerFont: "serif",
+        panelBg: "rgba(10,12,15,0.85)",
+        sectionBg: "rgba(255,255,255,0.02)",
+        sectionBorder: "rgba(255,255,255,0.08)",
+        borderRadius: "24px",
+        sectionRadius: "16px",
+        inputRadius: "12px",
+        itemRadius: "14px",
+        btnRadius: "12px",
+        clipPath: "none",
+    };
+  } else if (currentVibe === VIBES.SIMPLE) {
+    s = {
         font: "Inter",
         headerFont: "Inter",
         panelBg: "rgba(28,28,30,0.95)",
@@ -50,8 +67,9 @@ const SettingsPanel = ({ isOpen, onClose }) => {
         itemRadius: "12px",
         btnRadius: "10px",
         clipPath: "none",
-      }
-    : {
+      };
+  } else {
+    s = {
         font: "JetBrains Mono",
         headerFont: "Orbitron",
         panelBg: "rgba(10,10,18,0.95)",
@@ -64,6 +82,7 @@ const SettingsPanel = ({ isOpen, onClose }) => {
         btnRadius: "0",
         clipPath: "polygon(3% 0, 100% 0, 100% 92%, 97% 100%, 0 100%, 0 8%)",
       };
+  }
 
   const SectionHeader = ({ children }) => (
     <h3
@@ -166,6 +185,7 @@ const SettingsPanel = ({ isOpen, onClose }) => {
                     {[
                       { key: VIBES.GAMING, label: "Gaming", icon: Gamepad2 },
                       { key: VIBES.SIMPLE, label: "Simple", icon: Layers },
+                      { key: VIBES.ELEGANT, label: "Elegant", icon: Sparkles },
                     ].map((v) => {
                       const active = currentVibe === v.key;
                       const Icon = v.icon;

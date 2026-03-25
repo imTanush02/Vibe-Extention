@@ -2,8 +2,9 @@ import React from "react";
 import { useVibe } from "../../engine/vibeEngine";
 import GamingClock from "./clock/GamingClock";
 import SimpleClock from "./clock/SimpleClock";
+import ElegantClock from "./clock/ElegantClock";
 
-const CLOCKS = { gaming: GamingClock, simple: SimpleClock };
+const CLOCKS = { gaming: GamingClock, simple: SimpleClock, elegant: ElegantClock };
 
 const Clock = () => {
   const { currentVibe, theme } = useVibe();

@@ -2,8 +2,9 @@ import React from "react";
 import { useVibe } from "../../engine/vibeEngine";
 import GamingGreeting from "./greeting/GamingGreeting";
 import SimpleGreeting from "./greeting/SimpleGreeting";
+import ElegantGreeting from "./greeting/ElegantGreeting";
 
-const GREETINGS = { gaming: GamingGreeting, simple: SimpleGreeting };
+const GREETINGS = { gaming: GamingGreeting, simple: SimpleGreeting, elegant: ElegantGreeting };
 
 const Greeting = () => {
   const { currentVibe, userName, setUserName, theme } = useVibe();

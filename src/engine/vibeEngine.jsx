@@ -7,6 +7,7 @@ const VibeContext = createContext();
 export const VIBES = {
   GAMING: "gaming",
   SIMPLE: "simple",
+  ELEGANT: "elegant",
 };
 
 const DEFAULT_CONFIG = {

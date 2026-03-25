@@ -6,10 +6,12 @@ import clsx from "clsx";
 
 import GamingLayout from "../components/layouts/GamingLayout";
 import SimpleLayout from "../components/layouts/SimpleLayout";
+import ElegantLayout from "../components/layouts/ElegantLayout";
 
 const LAYOUTS = {
   gaming: GamingLayout,
   simple: SimpleLayout,
+  elegant: ElegantLayout,
 };
 
 const App = () => {

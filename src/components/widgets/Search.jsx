@@ -2,8 +2,9 @@ import React from "react";
 import { useVibe } from "../../engine/vibeEngine";
 import GamingSearch from "./search/GamingSearch";
 import SimpleSearch from "./search/SimpleSearch";
+import ElegantSearch from "./search/ElegantSearch";
 
-const SEARCHES = { gaming: GamingSearch, simple: SimpleSearch };
+const SEARCHES = { gaming: GamingSearch, simple: SimpleSearch, elegant: ElegantSearch };
 
 const Search = () => {
   const { currentVibe, theme } = useVibe();

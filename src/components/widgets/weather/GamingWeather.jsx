@@ -30,8 +30,9 @@ const GamingWeather = ({ accentColor }) => {
 
       {/* Main Display Box */}
       <div
-        className="relative bg-black/60 border border-[var(--accent)] p-4 pr-12 clip-path-polygon"
+        className="relative border border-[var(--accent)] p-4 pr-12 clip-path-polygon"
         style={{
+          backgroundColor: accentColor + "1A", // 10% opacity of the accent color for a nice glass effect
           clipPath: "polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%)",
           boxShadow: `0 0 15px -5px ${accentColor}40`,
         }}

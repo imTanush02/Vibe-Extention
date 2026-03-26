@@ -8,7 +8,8 @@ import ResourcesWidget from "../ResourcesWidget";
 import { motion } from "framer-motion";
 
 const SimpleWidgets = () => {
-  const { widgets } = useVibe();
+  const { widgets, theme } = useVibe();
+  const accentColor = theme?.accent || "#ffffff";
 
   const defaultPositions = {
     todo: { x: 50, y: 100 },
@@ -73,8 +74,10 @@ const SimpleWidgets = () => {
             className="absolute pointer-events-auto"
             transition={{ duration: 0.2 }}
           >
-            {/* Simple rounded card wrapper */}
-            <div className="bg-black/30 backdrop-blur-md rounded-2xl border border-white/10 p-5 overflow-hidden hover:bg-black/20 hover:border-white/20 transition-all duration-300 shadow-sm">
+            <div 
+              className="backdrop-blur-md rounded-2xl border border-white/10 p-5 overflow-hidden transition-all duration-300 shadow-sm hover:border-white/20"
+              style={{ backgroundColor: accentColor + "3A" }}
+            >
               {/* Label */}
               <div className="text-[10px] text-white/40 font-medium tracking-wide uppercase mb-3">
                 {labels[key]}

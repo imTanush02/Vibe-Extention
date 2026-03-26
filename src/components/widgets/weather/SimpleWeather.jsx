@@ -4,6 +4,7 @@ import {
   CloudDrizzle, Droplets, MapPin, Thermometer, CloudFog, Wind,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { useVibe } from "../../engine/vibeEngine";
 
 const WMO_ICONS = {
   0: Sun, 1: Sun, 2: Cloud, 3: Cloud,
@@ -26,6 +27,8 @@ const WMO_DESC = {
 };
 
 const SimpleWeather = () => {
+  const { theme } = useVibe();
+  const accentColor = theme?.accent || "#ffffff";
   const [weather, setWeather] = useState(null);
   const [city, setCity] = useState("");
   const [loading, setLoading] = useState(true);
@@ -81,7 +84,10 @@ const SimpleWeather = () => {
       className="flex items-start gap-4 font-['Inter']"
     >
       {/* Detail Card */}
-      <div className="bg-black/40 backdrop-blur-md rounded-2xl p-4 min-w-[220px] border border-white/10 shadow-sm">
+      <div 
+        className="backdrop-blur-md rounded-2xl p-4 min-w-[220px] border border-white/10 shadow-sm"
+        style={{ backgroundColor: accentColor + "3A" }}
+      >
         <p className="text-white/90 text-sm font-medium mb-3">{desc}</p>
 
         {/* Humidity bar */}
@@ -111,7 +117,10 @@ const SimpleWeather = () => {
       </div>
 
       {/* Temp Circle */}
-      <div className="w-28 h-28 rounded-full bg-black/30 backdrop-blur-md border border-white/10 shadow-sm flex flex-col items-center justify-center">
+      <div 
+        className="w-28 h-28 rounded-full backdrop-blur-md border border-white/10 shadow-sm flex flex-col items-center justify-center"
+        style={{ backgroundColor: accentColor + "3A" }}
+      >
         <span className="text-2xl font-semibold text-white leading-none">
           {weather.temp}
           <span className="text-sm text-white/50">°C</span>

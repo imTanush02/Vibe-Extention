@@ -1,25 +1,17 @@
 import React, { useState } from "react";
 import { Search as SearchIcon } from "lucide-react";
 import { motion } from "framer-motion";
-
-const SEARCH_TARGETS = [
-  { key: "google", name: "Google", url: "https://www.google.com/search?q=" },
-  { key: "youtube", name: "YouTube", url: "https://www.youtube.com/results?search_query=", favicon: "https://www.google.com/s2/favicons?domain=youtube.com&sz=32" },
-  { key: "images", name: "Images", url: "https://www.google.com/search?tbm=isch&q=", favicon: "https://www.google.com/s2/favicons?domain=images.google.com&sz=32" },
-  { key: "reddit", name: "Reddit", url: "https://www.reddit.com/search/?q=", favicon: "https://www.google.com/s2/favicons?domain=reddit.com&sz=32" },
-  { key: "wiki", name: "Wikipedia", url: "https://en.wikipedia.org/w/index.php?search=", favicon: "https://www.google.com/s2/favicons?domain=wikipedia.org&sz=32" },
-  { key: "quora", name: "Quora", url: "https://www.quora.com/search?q=", favicon: "https://www.google.com/s2/favicons?domain=quora.com&sz=32" },
-];
+import SearchPivot, { getSearchUrl } from "./SearchPivot";
 
 const SimpleSearch = () => {
   const [query, setQuery] = useState("");
-  const [activeTarget, setActiveTarget] = useState("google");
+  const [activeTarget, setActiveTarget] = useState("default");
 
   const handleSearch = (e) => {
     e.preventDefault();
     if (!query.trim()) return;
-    const target = SEARCH_TARGETS.find((t) => t.key === activeTarget) || SEARCH_TARGETS[0];
-    window.location.href = `${target.url}${encodeURIComponent(query)}`;
+    const url = getSearchUrl(activeTarget);
+    window.location.href = `${url}${encodeURIComponent(query)}`;
   };
 
   return (
@@ -48,35 +40,9 @@ const SimpleSearch = () => {
         </button>
       </form>
 
-      {/* Search On row */}
-      <div className="flex items-center gap-2 flex-wrap mt-4">
-        <span className="bg-black/10 backdrop-blur-md border border-white/10 rounded-full px-3 py-1.5 text-xs text-white/50 font-medium shadow-sm">
-          Search On
-        </span>
-
-        {SEARCH_TARGETS.filter((t) => t.key !== "google").map((t) => (
-          <button
-            key={t.key}
-            onClick={() => setActiveTarget(t.key)}
-            className="flex items-center gap-1.5 rounded-full px-3 py-1.5 transition-all text-xs font-medium border border-white/10 shadow-sm hover:bg-white/10"
-            style={{
-              backgroundColor: activeTarget === t.key ? "rgba(255,255,255,0.15)" : "rgba(0,0,0,0.1)",
-              color: activeTarget === t.key ? "white" : "rgba(255,255,255,0.6)",
-            }}
-          >
-            {t.favicon && (
-              <img src={t.favicon} alt="" className="w-3.5 h-3.5 rounded-sm" />
-            )}
-            {t.name}
-            <div
-              className="w-2.5 h-2.5 rounded-full border ml-0.5 transition-colors"
-              style={{
-                borderColor: activeTarget === t.key ? "white" : "rgba(255,255,255,0.2)",
-                backgroundColor: activeTarget === t.key ? "white" : "transparent",
-              }}
-            />
-          </button>
-        ))}
+      {/* Target Selector */}
+      <div className="flex justify-center mt-2">
+        <SearchPivot activeId={activeTarget} onChange={setActiveTarget} vibe="simple" />
       </div>
     </motion.div>
   );

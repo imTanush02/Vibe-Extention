@@ -78,7 +78,7 @@ const GamingWidgets = () => {
               {isFocus && (
                 <div
                   className="absolute -top-6 left-0 font-['Orbitron'] text-sm tracking-widest opacity-80 pointer-events-none"
-                  style={{ color: accentColor }}
+                
                 >
                   FOCUS PROTOCOL
                 </div>
@@ -86,7 +86,7 @@ const GamingWidgets = () => {
               {isMission && (
                 <div
                   className="absolute -top-6 right-0 font-['Orbitron'] text-sm tracking-widest opacity-80 pointer-events-none"
-                  style={{ color: accentColor }}
+                
                 >
                   MISSION OBJECTIVES
                 </div>
@@ -94,8 +94,9 @@ const GamingWidgets = () => {
 
               {/* Main Container */}
               <div
-                className="backdrop-blur-xl bg-black/40 border border-white/10 p-6 rounded-lg overflow-hidden transition-all duration-300 hover:bg-black/50"
+                className="backdrop-blur-xl border border-white/10 p-6 rounded-lg overflow-hidden transition-all duration-300"
                 style={{
+                  backgroundColor: accentColor + "3A",
                   boxShadow: `0 0 30px -10px ${accentColor}40`,
                   borderLeft: isFocus
                     ? `2px solid ${accentColor}`

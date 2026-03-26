@@ -19,25 +19,21 @@ const GamingGreeting = ({ userName, setUserName, accentColor }) => {
 
   return (
     <>
-      <motion.span
-        className="text-4xl md:text-6xl mb-4 font-['Orbitron'] font-bold tracking-[0.2em] uppercase"
+      
+
+      <div
+        className="relative w-full flex flex-col items-center -top-10 "
+      >
+        <h1
+        className="text-4xl md:text-5xl text-center font-['Orbitron'] font-bold tracking-[0.2em] uppercase"
         style={{
-          color: "#ffffff",
-          textShadow: `0 0 20px ${accentColor}, 0 0 10px white`,
+          color: "#f7f5f5ff",
+          textShadow: `0 0 50px ${accentColor}, 0 0 50px white`,
         }}
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.2, duration: 0.4 }}
+
       >
         WELCOME
-      </motion.span>
-
-      <motion.div
-        className="relative w-full flex justify-center"
-        initial={{ scale: 0.95, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ delay: 0.3, duration: 0.5 }}
-      >
+      </h1>
         <input
           type="text"
           value={localName}
@@ -48,16 +44,16 @@ const GamingGreeting = ({ userName, setUserName, accentColor }) => {
           className="bg-transparent text-center outline-none w-full cursor-text placeholder-opacity-50 transition-all duration-300 font-['Orbitron'] font-medium uppercase text-2xl md:text-3xl tracking-[0.3em]"
           style={{
             color: accentColor,
-            textShadow: `0 0 10px ${accentColor}`,
+            textShadow: `0 0 50px ${accentColor}`,
           }}
           spellCheck="false"
           autoComplete="off"
           outline="none"
         />
-      </motion.div>
+      </div>
 
       <motion.div
-        className="flex items-center gap-4 mt-8 w-full justify-center opacity-70"
+        className="flex items-center gap-1  w-full justify-center opacity-70"
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.7 }}
         transition={{ delay: 0.5 }}

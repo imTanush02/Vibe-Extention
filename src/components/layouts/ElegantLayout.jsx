@@ -26,7 +26,7 @@ const ElegantLayout = ({ onOpenSettings }) => {
         </div>
 
         {/* Center content */}
-        <div className="flex-1 flex flex-col items-center justify-center w-full mt-[-10vh]">
+        <div className="flex-1 flex flex-col items-center justify-center w-full mt-[-20vh]">
           <motion.div 
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -61,8 +61,8 @@ const ElegantLayout = ({ onOpenSettings }) => {
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-black/10" />
         
         {/* Elegant border framing */}
-        <div className="absolute inset-4 border border-white/5 rounded-3xl" />
-        <div className="absolute inset-8 border border-white/2 rounded-2xl" />
+        <div className="absolute inset-4 border-[0.1px] border-white/10 rounded-3xl" />
+        <div className="absolute inset-8 border-[0.1px] border-white/20 rounded-2xl" />
       </div>
     </>
   );

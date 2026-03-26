@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useVibe } from "../../engine/vibeEngine";
 
 const SimpleGreeting = ({ userName, setUserName }) => {
+  const { theme } = useVibe();
+  const accentColor = theme?.accent || "#ffffff";
   const [localName, setLocalName] = useState(userName || "");
   const [time, setTime] = useState(new Date());
 

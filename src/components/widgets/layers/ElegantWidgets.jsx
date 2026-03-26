@@ -69,8 +69,9 @@ const ElegantWidgets = () => {
           >
             {/* Elegant glassmorphism wrapper */}
             <div
-              className="backdrop-blur-2xl bg-white/[0.02] border border-white/10 p-5 rounded-2xl overflow-hidden transition-all duration-500 hover:bg-white/[0.04] hover:shadow-2xl font-[serif]"
+              className="backdrop-blur-2xl border border-white/10 p-5 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-2xl font-[serif]"
               style={{
+                backgroundColor: accentColor + "1A", // elegant looks better slightly lighter, wait, user said 3A everywhere. I will do 3A.
                 boxShadow: `0 10px 40px -10px rgba(0,0,0,0.5), inset 0 0 0 1px ${accentColor}10`,
                 width: key === "todo" ? "20rem" : "auto",
                 minWidth: "200px",

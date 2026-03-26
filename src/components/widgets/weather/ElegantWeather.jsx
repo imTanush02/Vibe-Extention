@@ -79,7 +79,8 @@ const ElegantWeather = ({ accentColor }) => {
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 1, ease: "easeOut" }}
-      className="flex flex-col items-end gap-2 font-[serif]"
+      className="flex flex-col items-end gap-2 font-[serif] p-6 rounded-3xl backdrop-blur-xl border border-white/10 shadow-2xl"
+      style={{ backgroundColor: accentColor + "3A" }}
     >
       <div className="flex items-center gap-4">
         <div className="flex flex-col items-end">
